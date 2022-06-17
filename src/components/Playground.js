@@ -10,7 +10,7 @@ import Gun from "./Gun";
 const totalDudes = 100;
 const bulletSpeed = 5;
 
-const Playground = ({ width = 500, height = 800 }) => {
+const Playground = ({ width = 400, height = 600 }) => {
   const mousePosition = useRef({ x: 0, y: 0 });
   const gunRef = useRef(null);
   const [bullets, setBullets] = useState([]);
@@ -76,7 +76,7 @@ const Playground = ({ width = 500, height = 800 }) => {
     >
       <Dudes total={totalDudes} />
       <Bullets bullets={bullets} speed={5} />
-      <Gun ref={gunRef} />
+      <Gun ref={gunRef} x={width / 2} y={height - 20} />
     </Stage>
   );
 };
