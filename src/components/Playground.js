@@ -75,7 +75,7 @@ const Playground = ({ width = 400, height = 600 }) => {
       onMouseDown={onMouseDown}
     >
       <Dudes total={totalDudes} />
-      <Bullets bullets={bullets} speed={5} />
+      <Bullets bullets={bullets} rounded={true} />
       <Gun ref={gunRef} x={width / 2} y={height - 20} />
     </Stage>
   );
