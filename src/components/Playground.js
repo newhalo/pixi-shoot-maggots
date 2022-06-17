@@ -6,9 +6,12 @@ import { rotateToPoint } from "../utils/animation";
 import Bullets from "./Bullets";
 import Dudes from "./Dudes";
 import Gun from "./Gun";
+import Stats from "stats.js";
 
 const totalDudes = 100;
 const bulletSpeed = 5;
+const stats = new Stats();
+stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
 
 const Playground = ({ width = 400, height = 600 }) => {
   const mousePosition = useRef({ x: 0, y: 0 });
@@ -44,6 +47,7 @@ const Playground = ({ width = 400, height = 600 }) => {
 
   const animateBullets = useCallback(
     (deltaTime) => {
+      stats.begin();
       gunRef.current.rotation = rotateToPoint(
         mousePosition.current.x,
         mousePosition.current.y,
@@ -58,12 +62,14 @@ const Playground = ({ width = 400, height = 600 }) => {
           y: item.y + Math.sin(item.rotation) * bulletSpeed
         }))
       );
+      stats.end();
     },
     [mousePosition]
   );
 
   useEffect(() => {
     Ticker.shared.add(animateBullets);
+    document.body.appendChild(stats.dom);
     return () => Ticker.shared.remove(animateBullets);
   }, [animateBullets]);
 

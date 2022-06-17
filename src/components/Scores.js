@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../contexts/appContext";
 
-const Scores = () => {
+const Scores = ({ viewportWidth = 300 }) => {
   const { scores } = useContext(AppContext);
   return (
     <div
@@ -9,7 +9,7 @@ const Scores = () => {
         color: "white",
         position: "fixed",
         top: 15,
-        left: 15,
+        left: viewportWidth / 2 - 10,
         fontWeight: 700
       }}
     >
