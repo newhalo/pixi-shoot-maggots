@@ -1,4 +1,4 @@
-import { ParticleContainer } from "@inlet/react-pixi/animated";
+import { Container } from "@inlet/react-pixi/animated";
 import { Rectangle, Ticker } from "pixi.js";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { initDudes, updateDude } from "../utils/animation";
@@ -33,7 +33,7 @@ const Dudes = ({ total = 100 }) => {
   }, [animate]);
 
   return (
-    <ParticleContainer>
+    <Container>
       {dudes.map(
         (
           {
@@ -63,7 +63,7 @@ const Dudes = ({ total = 100 }) => {
           />
         )
       )}
-    </ParticleContainer>
+    </Container>
   );
 };
 
